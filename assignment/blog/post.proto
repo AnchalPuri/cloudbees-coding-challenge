@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/anchalpuri/assignment/blog";
+
+package blog;
+
+message Post {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+  string author = 4;
+  string pub_date = 5;
+  repeated string tags = 6;
+}
+
+message PostID {
+  string id = 1;
+}
+
+message Response{
+  string response = 1;
+}
+service BlogService {
+  rpc CreatePost (Post) returns (Post);
+  rpc ReadPost (PostID) returns (Post); 
+  rpc UpdatePost (Post) returns (Post); 
+  rpc DeletePost (PostID) returns (Response);
+}
